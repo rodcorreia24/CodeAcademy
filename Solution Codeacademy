@@ -1,0 +1,41 @@
+-- This is the first query:
+
+SELECT distinct year from population_years;
+
+-- Add your additional queries below:
+
+--4
+select *
+from population_years
+where country like 'Gabon'
+order by population 
+limit 1;
+
+--5
+select *
+from population_years
+where year=2005
+order by population asc
+limit 10;
+
+--6
+select distinct country
+from population_years
+where year =2010
+and population>100;
+
+--7
+select distinct country 
+from population_years
+where country like '%slands%';
+
+--8
+select country,
+        year,
+        population - (select population
+                     from population_years
+                     where country like                                 'Indonesia' 
+                      and year=2000) as difference_2000_2010
+from population_years
+where country like 'Indonesia' 
+and year=2010;
